@@ -1,0 +1,24 @@
+TODO
+
+Server data storage
+  Array for recent messages
+  text file for backups of old messages
+  extra: request old function
+
+Chat style
+  Example:
+    {time} {username}: {message}
+    {time} {username}: {image filename}{hash} download? Y/N
+
+Message hashing
+  ms time from client + server
+
+Message history
+  server cache downloaded on login (20 messages)
+  server hosts back up with request functional
+  messages hosted indefinitely
+
+images
+  images hosted on server for a month
+  images downloaded on request to client
+  
