@@ -1,0 +1,39 @@
+# the ignore file
+# ignore .DS_Store
+.DS_Store
+
+# ignore tmp files
+*~
+
+# ignore .class files
+*.class
+
+# ignore the bin
+bin/*
+
+
+# ignore .swp files
+*.swp
+
+# ignore the stuff in the doc directory
+*/doc/*
+
+# ignore the coverage report
+*/coveragereport/*
+
+#ignore jacoco and stuff
+jacoco.exec
+
+# ignore the .DS_Store files
+.DS_Store
+
+
+# LATEX STUFF
+# ignore the aux etc. files
+*.aux
+*.log
+*.toc
+*.dvi
+
+#ignore the pdfs in the TeX_bin
+*/TeX_bin/*
