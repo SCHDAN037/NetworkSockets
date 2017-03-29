@@ -27,7 +27,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all:  Message.class User.class Server.class ServerApp.class HelloWorld.class
+all:  Message.class Listener.class Writer.class User.class Server.class ServerApp.class HelloWorld.class
 
 
 # Rules for unit testing

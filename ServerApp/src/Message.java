@@ -15,21 +15,18 @@ class Message {
 	// values are final since they should never change
 	private final String data;
 	private final  long time;
-	private final String user;
 
-	Message( String d, long t, String u) {
+	Message( String d, long t) {
 		data = d;
 		assert( data != null );
 		time = t;
 		assert( time != 0 );
-		user = u;
-		assert( user != null ); 
 	}
 
 	/* get methods
 	 */
 	public String getUser(){
-		return user;
+		return "oops!";
 	}
 
 	public String getData(){
@@ -47,7 +44,7 @@ class Message {
 		Date date = new Date(time);
 		DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		String dateFormatted = formatter.format(date);
-		return dateFormatted + " " + user + ": " + data;
+		return dateFormatted + " " + data;
 	}
 
 }
