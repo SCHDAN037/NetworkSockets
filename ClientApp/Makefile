@@ -27,7 +27,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all: HelloWorld.class 
+all: ClientAPI.class 
 
 
 # Rules for unit testing
