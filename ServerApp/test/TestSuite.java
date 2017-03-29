@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	TestHelloWorld.class
+	TestHelloWorld.class, TestMessage.class
 	/* <TestExample.class>, <TestExample2.class>, ...; */
 	
 })
