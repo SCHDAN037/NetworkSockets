@@ -1,0 +1,719 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"data",
+				"data_array1"
+			],
+			[
+				"li",
+				"load_immediate\tlui $rd,IMMED[31:16]; ori $rd,$rd,IMMED[15:0]"
+			],
+			[
+				"out",
+				"out_msg"
+			],
+			[
+				"la",
+				"load_address\tlui $rd,LabelAddr[31:16]; ori $rd,$rd,LabelAddr[15:0]"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"in",
+				"in_msg"
+			],
+			[
+				"arr",
+				"arrSize"
+			],
+			[
+				"best",
+				"bestTime"
+			],
+			[
+				"arra",
+				"arraySizes"
+			],
+			[
+				"sort",
+				"sortCount"
+			],
+			[
+				"pare",
+				"parallelRunTimes"
+			],
+			[
+				"thread",
+				"threadCounter"
+			],
+			[
+				"final",
+				"finalSpeedup"
+			],
+			[
+				"bestSpee",
+				"bestSpeedup"
+			],
+			[
+				"index",
+				"indexOfMin"
+			],
+			[
+				"parallelRun",
+				"parallelRunTimes"
+			],
+			[
+				"para",
+				"parallelRunSpeedup"
+			],
+			[
+				"bestP",
+				"bestParallelRunTime"
+			],
+			[
+				"ser",
+				"serialTimes"
+			],
+			[
+				"serial",
+				"serialTimes"
+			],
+			[
+				"seri",
+				"serialRuns"
+			],
+			[
+				"ar",
+				"arraySizeMax"
+			],
+			[
+				"thre",
+				"threadCounter"
+			],
+			[
+				"fina",
+				"finalSpeedup"
+			],
+			[
+				"nu",
+				"numberOfThreads"
+			],
+			[
+				"bestSppe",
+				"bestSpeedUps"
+			],
+			[
+				"bestTimes",
+				"bestTimes"
+			],
+			[
+				"spe",
+				"Speedup"
+			],
+			[
+				"bestrun",
+				"bestRunTimeParallel"
+			],
+			[
+				"bestR",
+				"bestRunTimeParallel"
+			],
+			[
+				"ou",
+				"outputLine"
+			],
+			[
+				"dur",
+				"durationsParallel"
+			],
+			[
+				"left",
+				"leftPointer"
+			],
+			[
+				"right",
+				"rightPointer"
+			],
+			[
+				"r",
+				"rightPointer"
+			],
+			[
+				"Test",
+				"TestMergesortParallel"
+			],
+			[
+				"pi",
+				"pivot"
+			],
+			[
+				"piv",
+				"pivot-1"
+			],
+			[
+				"pr",
+				"println"
+			],
+			[
+				"dura",
+				"durationsParallel"
+			],
+			[
+				"as",
+				"asList"
+			],
+			[
+				"merge",
+				"mergeResult"
+			],
+			[
+				"ass",
+				"assertTrue"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"righ",
+				"rightArray"
+			],
+			[
+				"ra",
+				"radius"
+			],
+			[
+				"ray",
+				"rayOrigin"
+			],
+			[
+				"rI",
+				"rI_X"
+			],
+			[
+				"U",
+				"unitVectorNormal"
+			],
+			[
+				"rD",
+				"rD_X"
+			],
+			[
+				"b",
+				"b_coef"
+			],
+			[
+				"c",
+				"c_coef"
+			],
+			[
+				"sC",
+				"sC_X"
+			],
+			[
+				"r0",
+				"r0_X"
+			],
+			[
+				"Boa",
+				"BoardView"
+			],
+			[
+				"Board",
+				"BoardController"
+			],
+			[
+				"gu",
+				"guessPegs"
+			],
+			[
+				"gues",
+				"guessPegs"
+			],
+			[
+				"get",
+				"getPosition"
+			],
+			[
+				"Get",
+				"getColour"
+			],
+			[
+				"pos",
+				"posA"
+			],
+			[
+				"Boar",
+				"BoardController"
+			],
+			[
+				"co",
+				"colour"
+			],
+			[
+				"fi",
+				"fibonacciIterative"
+			],
+			[
+				"int",
+				"integers"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Java/Ant.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Java/Ant.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Java/Ant.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Make - Test.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/Make - Test.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/Make - Test.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 271.0,
+		"last_filter": "up",
+		"selected_items":
+		[
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"pac",
+				"Package Control: List Packages"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"make",
+				"Makefile (PP_Prac2): make all"
+			],
+			[
+				"lat",
+				"LaTeXTools: Delete temporary files"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ma",
+				"Makefile (PP_Prac2): make all"
+			],
+			[
+				"mak",
+				"Makefile (PP_Prac1): make test"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"make tes",
+				"Makefile (PP_Prac1): make test"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 493.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/daniel/Desktop/2006.txt",
+		"/Users/daniel/Desktop/search.py",
+		"/Users/daniel/IdeaProjects/ChatApp/src/com/company/Main.java",
+		"/Users/daniel/Desktop/yeh.java",
+		"/Users/daniel/Desktop/mess.py",
+		"/Users/daniel/Documents/hello.py",
+		"/Users/daniel/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/daniel/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/daniel/Desktop/hello",
+		"/Users/daniel/Desktop/Practice/littledemos/README.md",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/ARCH_Prac1/Results",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/ARCH_Prac1/readme.txt",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/ARCH_Prac1/small_set.addr",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/ARCH_Prac1/small_L2_set.addr",
+		"/Users/daniel/Desktop/breaktherules/Has271.java",
+		"/Users/daniel/Desktop/breaktherules/StringSplosion.java",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/readprintint.asm",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/ASM_Prac1/question1.asm",
+		"/Users/daniel/Desktop/CS2003/CollisionDetection/readme.txt",
+		"/Users/daniel/Desktop/CS2003/libgdx_collision_starting_point/core/src/com/mygdx/game/Player.java",
+		"/Users/daniel/Desktop/CS2003/libgdx_collision_starting_point/core/src/com/mygdx/game/MyGdxGame.java",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/sample5.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/sample4.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/sample3.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/sample2.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/sample1.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/helloworld.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/exit.asm",
+		"/Users/daniel/Desktop/CS2002/Assembly/Sample ASM/branchdemo.asm",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/Person.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/PersonMover.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/PartyApp.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/GridBlock.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/CounterDisplay.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/PeopleCounter.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/RoomGrid.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/Makefile",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/doc/untitled.tex",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/doc/untitled.pdf",
+		"/Users/daniel/Desktop/CS2002/Assembly/Harambe.s",
+		"/Users/daniel/Desktop/CS2002/Assembly/HelloHarambe.s",
+		"/Users/daniel/Desktop/CS2002/Assembly/Integer.s",
+		"/Users/daniel/Desktop/CS2002/Assembly/HelloHarambe.R",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/CounterDisplay.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/GridBlock.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/PartyApp.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/PeopleCounter.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/Person.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/PersonMover.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/RoomGrid.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/animationSkeletonCode/RoomPanel.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/test/TestSuite.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac2/src/RoomPanel.java",
+		"/Users/daniel/Desktop/CS2005/Papers/Citiations",
+		"/Users/daniel/Desktop/Tetris/documentation/readme.txt",
+		"/Users/daniel/Desktop/old system",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/Results.txt",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/src/DriverSort.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/Makefile",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/src/MergesortParallel.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/test/TestSuite.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/test/TestQuicksortParallel.java",
+		"/Users/daniel/Desktop/CS2002/Practicals/CSC2002S/PP_Prac1/hello",
+		"/Users/daniel/Desktop/IntersectionOfTheSphere.java",
+		"/Users/daniel/Desktop/JavaProjectTemplate/Makefile",
+		"/Users/daniel/Desktop/JavaProjectTemplate/test/TestSuite.java",
+		"/Users/daniel/Desktop/JavaProjectTemplate/test/TestHelloWorld.java",
+		"/Users/daniel/Desktop/Java Project Template/project.sublime-project",
+		"/Users/daniel/Desktop/Java Project Template/Makefile",
+		"/Users/daniel/Desktop/Fib.java",
+		"/Users/daniel/Desktop/TestFib.java",
+		"/Users/daniel/Desktop/Makefile",
+		"/Users/daniel/Desktop/CS2/CSC2001F/DS1_Prac1/test/TestSuite.java",
+		"/Users/daniel/Desktop/CS2/CSC2001F/DS1_Prac1/makefile",
+		"/Users/daniel/Desktop/TestRunner.java",
+		"/Users/daniel/Desktop/TestJunit.java",
+		"/Users/daniel/Desktop/DuplicateRemover.java",
+		"/Users/daniel/Documents/Hello World/hello.py"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"double",
+			"cores",
+			"int",
+			"double",
+			"parallelTimes",
+			"double",
+			"sortCount",
+			"runCounter + testCnt",
+			"parallelRunTimes",
+			"parallelRunSpeedup",
+			"parallelRunTimes",
+			"parallelTimes",
+			"max",
+			"numberOfThreads",
+			"run",
+			"optimalCoefficient",
+			"merge",
+			"long",
+			"numberOfThreads",
+			"k",
+			"j",
+			"i",
+			"j",
+			"invok",
+			"k",
+			"j",
+			"i",
+			"merge",
+			"MergesortParallel",
+			"result",
+			"MergesortParallel",
+			"merge",
+			"long",
+			"durationsParallel",
+			"bestTimeParallel",
+			"double",
+			"durationParallel",
+			"dataSerial",
+			"long",
+			"startParallel",
+			"dataParallel",
+			"arallel",
+			"data",
+			"result",
+			"String",
+			"second",
+			"first",
+			"iMerged",
+			"iSecond",
+			"iFirst",
+			"rightArray",
+			"end",
+			"start",
+			"double",
+			"rD_x",
+			"rayDirectionMagnitude",
+			"rayDirection_Z",
+			"rayDirection_Y",
+			"rayDirection_X",
+			"Integer",
+			"rayVector",
+			"orange",
+			"test2",
+			"test1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 104.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "settings.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 88.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
