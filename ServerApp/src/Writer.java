@@ -1,5 +1,6 @@
 
-/** this dumps the content of a bufferedReader to the screen
+/** This class takes messages from the client's queue at writes them
+ * 	back to the client's socket
  * @Author Oliver Makins
  * @Version 29/03/2017
  */
@@ -26,10 +27,12 @@ public class Writer extends Thread {
 			String line = "" ;
 			Message m; 
 			while (true) {
-				
-				ps.println(line);
 				// System.out.println(line);
 				if( line.equals("q")) { System.out.println("bye") ; break; }
+				try { 
+					m = queue.take(); // wait for the next element in the queue
+				} catch (Exception e) { System.out.println(e); break;}
+				ps.println(m.toString()); // write it to the socket
 			}
 	}
 

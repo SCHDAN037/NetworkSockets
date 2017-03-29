@@ -17,6 +17,9 @@ class Server {
 	private final User user2;
 
 	Server(User u1, User u2) {
+		// I have not differentiated which is the main server queue
+		// and which is the client queue since with functionality for only
+		// two users it is irrelevant
 		queue1 = new ArrayBlockingQueue<Message>(1000);
 		queue2 = new ArrayBlockingQueue<Message>(1000);
 		user1 = u1;

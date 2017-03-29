@@ -1,5 +1,5 @@
 /** The listener listens for data from the client and writes it to the 
- * 	queue for the rest of the of the chat to read
+ * 	main server queue for the rest of the of the chat to read
  *	@Author Oliver Makins
  *	@Version 29/03/2017
  */
@@ -25,24 +25,25 @@ public class Listener extends Thread {
 
 	public void run() {
 		String line;
+		Message m;
 		try { 
 			while (true) {
 				synchronized (this) { while (!reader.ready()) { wait(1000);}} // spin
 				line = reader.readLine();
-				 // System.out.println(line);
-				 // w
-				 //
-				 // write the line as a message to the queue
-				 //
+				// System.out.println(line);
+				// w
+				//
+				// write the line as a message to the queue
+				
+				if( line.equals("q")) { 
+					// for good etiquette the client should say that they are leaving
+					// we can implement that later on the server where the quit message is more
+					// precise to require that
+					break; 
+				}
 
-				 if( line.equals("q")) { 
-					 System.out.println("bye") ; 
-					 
-					 // message = bye
-					 break; 
-				 }
-
-
+				m = new Message(line, System.currentTimeMillis());
+				queue.put(m); // add this to the queue
 
 			}
 		} 
