@@ -22,6 +22,11 @@ public class read extends Thread {
 			String line;
 			try { 
 				while (true) {
+					synchronized( this) {
+						while (!reader.ready()) {
+							wait(1000); // spin until we can print to the screen
+						}
+					}
 					line = reader.readLine();
 					System.out.println(line);
 					 // System.out.println(line);
