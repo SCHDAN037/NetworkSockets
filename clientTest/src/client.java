@@ -16,7 +16,12 @@ public class client {
 
 	public static void main (String [] args) {
 		try{ 
-			InetAddress address = InetAddress.getByName("127.0.0.1");
+			System.out.println("Welcome to Proprietary Open Relay Network");
+			System.out.println("Please enter your username: ");
+			System.out.println("Please enter the server IP: n.n.n.n");
+			Scanner s = new Scanner(System.in);
+			String ip = s.nextLine();
+			InetAddress address = InetAddress.getByName(ip);
 			Socket socket = new Socket(address, 2017);
 			System.out.println("Connection open");
 			PrintStream ps = new PrintStream(socket.getOutputStream());
