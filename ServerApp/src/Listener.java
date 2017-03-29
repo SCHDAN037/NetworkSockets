@@ -14,12 +14,14 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class Listener extends Thread {
 
-	private BufferedReader reader;
-	private ArrayBlockingQueue <Message>queue;
+	private final BufferedReader reader;
+	private final ArrayBlockingQueue <Message>queue;
 	
 	Listener(ArrayBlockingQueue <Message> q, BufferedReader r) {
 		reader = r;
+		assert ( reader != null);
 		queue = q;
+		assert (queue != null );
 	}
 
 
@@ -28,12 +30,16 @@ public class Listener extends Thread {
 		Message m;
 		try { 
 			while (true) {
-				synchronized (this) { while (!reader.ready()) { wait(1000);}} // spin
+				System.out.println("In Listener Loop");
+				//synchronized (this) { 
+					while (!reader.ready()) { sleep(1000);}
+				//} // spin
 				line = reader.readLine();
 				// System.out.println(line);
 				// w
 				//
 				// write the line as a message to the queue
+				if ( line.equals("") ) { continue; } // and error
 				
 				if( line.equals("q")) { 
 					// for good etiquette the client should say that they are leaving
@@ -43,11 +49,17 @@ public class Listener extends Thread {
 				}
 
 				m = new Message(line, System.currentTimeMillis());
+//				System.out.println("This is what you yped: " + m);
+//				System.out.println("This is the queue" + queue);
 				queue.put(m); // add this to the queue
 
 			}
 		} 
-		catch (Exception e) { System.out.println(e);}
+		catch (Exception e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			System.out.println("line 56 in Listener");
+		}
 	}
 
 }

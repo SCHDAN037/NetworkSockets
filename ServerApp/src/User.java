@@ -30,13 +30,6 @@ class User extends Thread {
 	
 	User(Socket s) {
 		socket = s;
-		try {
-			writer =  new Writer ( ownQueue, new PrintStream(socket.getOutputStream()) );
-			listener = new Listener ( serverQueue, new BufferedReader(new InputStreamReader(socket.getInputStream()))) ;
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	protected void setMasterQueue( ArrayBlockingQueue <Message> s, ArrayBlockingQueue <Message> o) {
@@ -44,13 +37,33 @@ class User extends Thread {
 		ownQueue = o;
 		assert (s != null && !(o.equals(s))); // make sure it isn't messaging itself
 		serverQueue = s;
+
+		try {
+		writer =  new Writer ( ownQueue, new PrintStream(socket.getOutputStream()) );
+		listener = new Listener ( serverQueue, new BufferedReader(new InputStreamReader(socket.getInputStream()))) ;
+
+		}
+		catch (IOException e) { // MODIFIED FROM AND IOException
+			e.printStackTrace();
+			System.out.println(e);
+			System.out.println("Line 45 in user");
+		}
+
+
+
+		//DEBUG: I am testing this to run without sockets, to see if
+		//the server logic is correct
+		//writer =  new Writer ( ownQueue, new PrintStream(System.out));
+		//listener = new Listener ( serverQueue, new BufferedReader(new InputStreamReader(System.in))) ;
 	}
 
 	public void run() {
 		// run the basic Threads -- these will read and write everything to eachother
 		// they just dump to the screen
-		writer.run();
-		listener.run();
+		listener.start();
+		System.out.println("Listener is running");
+		writer.start();
+		System.out.println("Writer is running");
 		// write messages from socket
 		// read messages and send to them home
 	}

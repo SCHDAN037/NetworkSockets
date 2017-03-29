@@ -27,10 +27,13 @@ class Server {
 		// give the Users access to their own messages and those of the other user
 		user1.setMasterQueue(queue1, queue2);
 		user2.setMasterQueue(queue2, queue1);
+		System.out.println("Initialised Users and Queues");
+		
 
 		// let them loose into the wild
-		user1.run();
-		user2.run();
+		user1.start();
+		user2.start();
+		System.out.println("Chat running");
 	}
 
 } 
