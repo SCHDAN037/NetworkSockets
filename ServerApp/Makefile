@@ -27,7 +27,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all:  Message.class Server.class ServerApp.class HelloWorld.class
+all:  Message.class User.class Server.class ServerApp.class HelloWorld.class
 
 
 # Rules for unit testing
@@ -41,7 +41,7 @@ test: test_classes
 
 
 run:
-	java -ea -cp $(BINDIR) ServerApp
+	java -ea -cp $(BINDIR) server.ServerApp
 
 # Rules for generating documentation
 doc:
