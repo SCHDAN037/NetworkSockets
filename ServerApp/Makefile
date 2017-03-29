@@ -33,6 +33,7 @@ all:  Message.class Server.class ServerApp.class HelloWorld.class
 # Rules for unit testing
 test_classes: all \
 	TestHelloWorld.class \
+	TestMessage.class \
 	TestSuite.class
 
 test: test_classes
