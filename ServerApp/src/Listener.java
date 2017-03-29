@@ -32,7 +32,7 @@ public class Listener extends Thread {
 			while (true) {
 				System.out.println("In Listener Loop");
 				//synchronized (this) { 
-					while (!reader.ready()) { sleep(1000);}
+					while (!reader.ready()) { wait(49);}
 				//} // spin
 				line = reader.readLine();
 				// System.out.println(line);
