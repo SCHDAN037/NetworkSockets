@@ -310,6 +310,22 @@
 		[
 			[
 				[
+					"Packages/Makefile Improved/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile Improved/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile Improved/Make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
 					"Packages/Makefile/Make.sublime-build",
 					""
 				],
@@ -449,6 +465,9 @@
 	},
 	"file_history":
 	[
+		"/Users/daniel/NetworkSockets/ClientApp/src/ClientAPI.java",
+		"/Users/daniel/NetworkSockets/settings.sublime-project",
+		"/Users/daniel/NetworkSockets/NetworkSockets/src/HelloWorld.java",
 		"/Users/daniel/Desktop/2006.txt",
 		"/Users/daniel/Desktop/search.py",
 		"/Users/daniel/IdeaProjects/ChatApp/src/com/company/Main.java",
@@ -669,7 +688,7 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "Packages/Makefile Improved/Make.sublime-build",
 	"project": "settings.sublime-project",
 	"replace":
 	{
@@ -711,7 +730,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 88.0,
+	"side_bar_width": 291.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
