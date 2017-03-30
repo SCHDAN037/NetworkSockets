@@ -22,11 +22,11 @@ public class write extends Thread {
 
 		public void run() {
 			String line;
-			while (true) {
-				line = s.nextLine();
-				ps.println(user + ": " + line);
+			while (true) { // keep looping
+				line = s.nextLine(); // keep reading what the user says
+				ps.println(user + ": " + line); // write it to the chat
 				 // System.out.println(line);
-				 if( line.equals("q")) { 
+				 if( line.equals("q")) { // this doesn't work 100%, it is meant to allow the user to quit
 				 	ps.println(user + " has disconnected");
 				 	System.out.println("Closing connection, exiting");
 				 }

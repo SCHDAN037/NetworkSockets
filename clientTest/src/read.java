@@ -27,8 +27,8 @@ public class read extends Thread {
 							wait(1000); // spin until we can print to the screen
 						}
 					}
-					line = reader.readLine();
-					System.out.println(line);
+					line = reader.readLine(); // read what was sent to the client
+					System.out.println(line); // print it to the terminal
 					 // System.out.println(line);
 					 if( line.equals("q")) { break; }
 				}
