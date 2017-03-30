@@ -27,7 +27,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all:  Message.class Listener.class Writer.class User.class Server.class ServerApp.class HelloWorld.class
+all:  Message.class Listener.class Writer.class User.class Server.class ServerApp.class
 
 
 # Rules for unit testing
@@ -60,7 +60,5 @@ clean:
 	@rm -f jacoco.exec *.xml *.csv
 	@rm -Rf coveragereport
 	@rm -Rf doc
-	@rm *~
-	@rm */*~
-	@rm */**/*~
+
 

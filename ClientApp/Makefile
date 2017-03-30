@@ -27,7 +27,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all: ClientAPI.class 
+all: ReceiveThread.class SendThread.class ClientAPI.class ClientMain.class
 
 
 # Rules for unit testing
