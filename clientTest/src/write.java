@@ -27,7 +27,7 @@ public class write extends Thread {
 				// Synchronize to prevent other thread's output stream from interfering with this thread.
 				// Format the user's input.
 				synchronized(this) {
-				  System.out.print( user + " : " );
+				  //System.out.print( user + " : " );
 				  line = s.nextLine(); // keep reading what the user says
 				  ps.println(user + ": " + line); // write it to the chat
 				}

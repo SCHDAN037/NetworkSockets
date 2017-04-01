@@ -7,7 +7,7 @@
 
 package server;
 
-import java.util.Date; 
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -44,7 +44,7 @@ class Message {
 		Date date = new Date(time);
 		DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		String dateFormatted = formatter.format(date);
-		return dateFormatted + " " + data;
+		return "[" + dateFormatted + "]" + " " + data;
 	}
 
 }
