@@ -14,12 +14,12 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class Writer extends Thread {
 
 		
-		private PrintStream ps;
-		private ArrayBlockingQueue <Message>queue;
+		private PrintStream pStream;
+		private ArrayBlockingQueue <Message>messagesQueue;
 
 		Writer(ArrayBlockingQueue<Message> q , PrintStream p) {
-			ps = p;
-			queue = q;
+			pStream = p;
+			messagesQueue = q;
 
 		}
 
@@ -30,9 +30,9 @@ public class Writer extends Thread {
 				// System.out.println(line);
 				if( line.equals("q")) { System.out.println("bye") ; break; }
 				try { 
-					m = queue.take(); // wait for the next element in the queue
+					m = messagesQueue.take(); // wait for the next element in the messagesQueue
 				} catch (Exception e) { System.out.println(e); break;}
-				ps.println(m.toString()); // write it to the socket
+				pStream.println(m.toString()); // write it to the socket
 			}
 	}
 
