@@ -17,26 +17,29 @@ public class ServerApp {
 		
 
 		try { 
+			Server server = new Server(); // INSTANTIATE THE SERVER
+			server.start();				  // START THE THREAD
+			System.out.println("Created Server");
 			// COMMENTED OUT FOR THE DEBUG
-			ServerSocket messageListenerServerSocket = new ServerSocket(2017);
+			ServerSocket messageListenerServerSocket = new ServerSocket(2018);
 			ServerSocket userListenerServerSocket = new ServerSocket(2017);
 
 			//two sockets:
 			//one for listening for messages from all users
 			//one for listening for new users to connect
-			messageSocket = messageListenerServerSocket.accept();
-			userSocket = userListenerServerSocket.accept();
+			// messageSocket = messageListenerServerSocket.accept();
 			
-			NewUserListener userListner = new NewUserListener(userSocket, messageSocket);
+			// NewUserListener userListner = new NewUserListener(userSocket, messageSocket);
+			// userListner.start();
 			//Starts listening for users
-			userListner.start();
 
-			User u1 = new User(messageSocket);
-			System.out.println("Created user1");
-			User u2 = new User(messageSocket);
-			System.out.println("Created user2");
-			Server server = new Server(u1, u2);
-			System.out.println("Created Server");
+
+			while (true) { // keep adding new users to the server
+				// this is done by giving the server sockets, it will create the user
+				// objects itself
+				server.addNewUser(userListenerServerSocket.accept()); 
+			}
+
 		}
 		catch (Exception e) { //MODIFIED FROM IOEXCEPTION FOR DEBUG
 			e.printStackTrace();

@@ -15,12 +15,15 @@ class Message {
 	// values are final since they should never change
 	private final String data;
 	private final  long time;
+	private final int userID;
 
-	Message( String d, long t) {
+	Message( String d, long t, int i) {
 		data = d;
 		assert( data != null );
 		time = t;
 		assert( time != 0 );
+		userID = i;
+		assert( userID != 0 );
 	}
 
 	/* get methods
@@ -37,6 +40,10 @@ class Message {
 		return time;
 	}
 
+	public int getUserID() {
+		return userID;
+	}
+
 	/** Method prints out <time> <user>: <data>
 	 *
 	 */
@@ -44,7 +51,7 @@ class Message {
 		Date date = new Date(time);
 		DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		String dateFormatted = formatter.format(date);
-		return "[" + dateFormatted + "]" + " " + data;
+		return "[" + dateFormatted + "]" + " user: " + userID + " " + data;
 	}
 
 }

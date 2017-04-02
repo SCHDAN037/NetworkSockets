@@ -1,7 +1,7 @@
 /** The listener listens for data from the client and writes it to the
  * 	main server queue for the rest of the of the chat to read
  *	@Author Oliver Makins
- *	@Version 29/03/2017
+ *	@Version 02/04/2017
  */
 
 
@@ -15,7 +15,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class Listener extends Thread {
 
 	private final BufferedReader reader;
-	private final ArrayBlockingQueue <Message>queue;
+	private final BlockingQueue <Message>queue;
 
 	Listener(ArrayBlockingQueue <Message> q, BufferedReader r) {
 		reader = r;
@@ -33,13 +33,13 @@ public class Listener extends Thread {
 				System.out.println("In Listener Loop");
 				synchronized (this) {
 					while (!reader.ready()) { wait(49);}
-				} // spin
+				} // spin until the reader is ready
 				line = reader.readLine();
 				// System.out.println(line);
 				// w
 				//
 				// write the line as a message to the queue
-				if ( line.equals("") ) { continue; } // and error
+				if ( line.equals("") ) { continue; } // an error
 
 				if( line.equals("q")) {
 					// for good etiquette the client should say that they are leaving
@@ -48,7 +48,7 @@ public class Listener extends Thread {
 					break;
 				}
 
-				m = new Message(line, System.currentTimeMillis());
+				m = new Message(line, System.currentTimeMillis(), id);
 //				System.out.println("This is what you yped: " + m);
 //				System.out.println("This is the queue" + queue);
 				queue.put(m); // add this to the queue
