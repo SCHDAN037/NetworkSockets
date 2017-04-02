@@ -69,7 +69,17 @@ class Server extends Thread {
 		User u = new User(s, queue, id); // make another user to the chat
 		u.start(); // start the thread
 		users.add(u); // add it
+
+		/** add this functionality if we add usernames on the server; this will print out
+		 * who is online
+		 */
+		/*
+		for ( int i = 0; i < id ; i++ ) { // tell the user who else is in the chat
+		}
+		*/
+
 		id += 1;
+
 		} catch (IOException e) {e.printStackTrace();}
 	}
 

@@ -23,7 +23,7 @@ class Message {
 		time = t;
 		assert( time != 0 );
 		userID = i;
-		assert( userID != 0 );
+		assert( userID >= 0 );
 	}
 
 	/* get methods

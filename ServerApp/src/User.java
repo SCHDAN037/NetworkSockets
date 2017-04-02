@@ -54,7 +54,7 @@ class User extends Thread {
 		Message m;
 		try {
 			while (true) {
-				while (!reader.ready()) { wait(49);}  // spin until the reader is ready
+				while (!reader.ready()) { sleep(49);}  // spin until the reader is ready
 				line = reader.readLine();
 				// System.out.println(line);
 

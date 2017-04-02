@@ -34,8 +34,8 @@ public class client {
 			InetAddress address = InetAddress.getByName(ip);						// this converts the string ip into an InetAddress object
 			Socket userConnectSocket = new Socket(address, socket);					// this opens a Socket on port 2017 with the specified ip address
 			System.out.println("Connection open");
-			PrintStream printStream = new PrintStream(socket.getOutputStream());				// this prinstream just allows the user to write to the socket
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));	// this reads everything that the is written to the socket
+			PrintStream printStream = new PrintStream(userConnectSocket.getOutputStream());				// this prinstream just allows the user to write to the socket
+			BufferedReader reader = new BufferedReader(new InputStreamReader(userConnectSocket.getInputStream()));	// this reads everything that the is written to the socket
 
 			// create and start threads to read what the user types and write messages to std.out
 			write w = new write(printStream, username);
