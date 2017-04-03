@@ -25,8 +25,6 @@ class User extends Thread {
 	
 	// I will add objects for reading and writing once they are finished
 	private Socket socket; // This is a connection to the User
-	private Writer writer;
-	private Listener listener;
 	private final int id;
 	private final PrintStream ps;
 	private final BufferedReader reader;
@@ -75,6 +73,10 @@ class User extends Thread {
 				queue.put(m); // add this to the queue
 
 			}
+			// close all the streams and the socket when quitting or dying
+			socket.close();
+			reader.close();
+			ps.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
