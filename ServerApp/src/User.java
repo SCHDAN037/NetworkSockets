@@ -63,6 +63,8 @@ class User extends Thread {
 					// for good etiquette the client should say that they are leaving
 					// we can implement that later on the server where the quit message is more
 					// precise to require that
+					
+
 					break;
 				}
 

@@ -51,7 +51,8 @@ class Message {
 		Date date = new Date(time);
 		DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		String dateFormatted = formatter.format(date);
-		return "[" + dateFormatted + "]" + " user: " + userID + " " + data;
+		// return "[" + dateFormatted + "]" + " user: " + userID + " " + data;
+		return "[" + dateFormatted + "]" + " " + data;
 	}
 
 }
