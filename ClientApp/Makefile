@@ -15,7 +15,7 @@ TOOLS = $(LIB)/tools
 CLASSPATH=.:$(LIB)/junit-4.10.jar:$(LIB)/hamcrest-core-1.3.jar:$(SRC)/:$(BIN)/
 
 JAVAC = javac
-JFLAGS = -g -d $(BINDIR) -cp $(BINDIR):$(JUNIT)
+JFLAGS = -g -Xlint:unchecked -d $(BINDIR) -cp $(BINDIR):$(JUNIT) 
 
 vpath %.java $(SRCDIR):$(TESTDIR)
 vpath %.class $(BINDIR)
@@ -27,16 +27,19 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all: ReceiveThread.class SendThread.class ClientAPI.class ClientMain.class
+all:  write.class read.class client.class
 
 
 # Rules for unit testing
 test_classes: all \
-	TestHelloWorld.class \
 	TestSuite.class
 
 test: test_classes
 	java -ea -cp $(BINDIR):$(JUNIT) org.junit.runner.JUnitCore TestSuite
+
+
+run:
+	java -ea -cp $(BINDIR) client
 
 # Rules for generating documentation
 doc:
@@ -55,3 +58,7 @@ clean:
 	@rm -f jacoco.exec *.xml *.csv
 	@rm -Rf coveragereport
 	@rm -Rf doc
+	@rm *~
+	@rm */*~
+	@rm */**/*~
+

@@ -28,6 +28,7 @@ class User extends Thread {
 	private final int id;
 	private final PrintStream ps;
 	private final BufferedReader reader;
+	private String name; // the User's name
 	
 	User(Socket s, BlockingQueue <Message> q, int i) throws IOException { 
 		socket = s;
@@ -51,6 +52,12 @@ class User extends Thread {
 		String line;
 		Message m;
 		try {
+			// get the User's name
+			while (!reader.ready()) { sleep(49);}  // spin until the reader is ready
+			name = reader.readLine();
+			queue.put( new Message(name + " has connected", System.currentTimeMillis(), id) );
+
+			// now send the messages to the server
 			while (true) {
 				while (!reader.ready()) { sleep(49);}  // spin until the reader is ready
 				line = reader.readLine();
@@ -59,12 +66,9 @@ class User extends Thread {
 				// write the line as a message to the queue
 				if ( line.equals("") ) { continue; } // an error
 
-				if( line.equals("q")) {
+				if( line.equals(":q") || line.equals(":quit")) {
 					// for good etiquette the client should say that they are leaving
-					// we can implement that later on the server where the quit message is more
-					// precise to require that
-					
-
+					queue.put(new Message(name + " has left the chat.", System.currentTimeMillis(), id));
 					break;
 				}
 
