@@ -54,7 +54,9 @@ class Server extends Thread {
 				}
 
 				if ( u.getID() != m.getUserID()) {
+					
 					u.write(m); // write the message to the user
+
 					 // don't send the client its own messages
 				}
 
