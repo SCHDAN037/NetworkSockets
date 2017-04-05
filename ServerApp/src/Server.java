@@ -14,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.lang.InterruptedException;
 
 class Server extends Thread {
-	
+
 	//private queue q; this is a shared concurrent queue which each 'user' writes to.
 	private final BlockingQueue <Message>queue;
 	private final CopyOnWriteArrayList <User>users;
@@ -24,12 +24,12 @@ class Server extends Thread {
 
 		// Create the queue of all the messages
 		queue = new ArrayBlockingQueue<Message>(1000);
-		
+
 		// make a list of all the users in the chat
 		users = new CopyOnWriteArrayList<User>();
 		// give the Users access to their own messages and those of the other user
 		System.out.println("Initialised Users and Queues");
-		
+
 
 		// let them loose into the wild
 		System.out.println("Chat running");
@@ -54,7 +54,7 @@ class Server extends Thread {
 				}
 
 				if ( u.getID() != m.getUserID()) {
-					
+
 					u.write(m); // write the message to the user
 
 					 // don't send the client its own messages
@@ -65,10 +65,10 @@ class Server extends Thread {
 	}
 
 
-	protected void addNewUser(Socket s) {
+	protected void addNewUser(Socket s,FileReceiver fileReceiver_Thread) {
 		// increment the User's id
-		try { 
-		User u = new User(s, queue, id); // make another user to the chat
+		try {
+			User u = new User(s, queue, id, fileReceiver_Thread); // make another user to the chat
 		u.start(); // start the thread
 		users.add(u); // add it
 
@@ -85,4 +85,4 @@ class Server extends Thread {
 		} catch (IOException e) {e.printStackTrace();}
 	}
 
-} 
+}
