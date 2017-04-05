@@ -4,13 +4,13 @@
  * @Version 29/03/2017
  */
 
-
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+import java.nio.file.*;
+import java.net.Socket;
 
 public class read extends Thread {
-
 
 		private BufferedReader reader;
 
@@ -33,6 +33,26 @@ public class read extends Thread {
 						  String userFormatColor = (char)27 + "[36m";
 						  String clearColor  = (char)27 + "[37m" ;
 						  System.out.println( userFormatColor + line + clearColor ); // print it to the terminal
+
+							// line - input from other clients
+
+							// [00;00;00] : name :send filename.format
+							if ( line.toUpperCase().contains(":SEND") ) {
+								String startPos = line.substring( line.indexOf(" ")+1 ) ;
+								String name = startPos.substring(0, startPos.indexOf(":"));
+								String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
+								String formatedText = userFormatColor + name +" sent an image offer ("+ filename +") : Reply ':Y' to accept offer or ':N' to reject" + clearColor;
+								System.out.println( formatedText );
+							}
+
+						 // [00;00;00] : name :Y
+							else if ( line.toUpperCase().contains(":Y") ) {
+									String startPos = line.substring( line.indexOf(" ")+1 ) ;
+									String name = startPos.substring(0, startPos.indexOf(":")-1);
+
+									String formatedText = userFormatColor + name +" accepted image offer!" + clearColor ;
+						      System.out.println( formatedText );
+						  }
 						}
 				}
 					 // System.out.println(line);
@@ -40,6 +60,6 @@ public class read extends Thread {
 				}
 			}
 			catch (Exception e) { System.out.println(e);}
-	}
+		}
 
 }
