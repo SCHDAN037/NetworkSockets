@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
-
+import java.net.UnknownHostException;
+import java.io.IOException;
+import java.nio.file.*;
 
 /** this class writes everything it sees to a printstream
  * @Author Oliver Makins
@@ -13,14 +15,15 @@ import java.net.Socket;
 
 public class write extends Thread {
 
-
 	private PrintStream printStream;
 	private Scanner scanner ;
 	private String user;
 	public static boolean quit;
-	public static BufferedReader reader; 
+	public static BufferedReader reader;
 	public static PrintStream stream;
 	public static Socket userSocket;
+	public static Thread fileTransfer_Thread;
+	public static Thread fileReceiver_Thread;
 
 	write(PrintStream p, String user, Socket userSocket, BufferedReader reader) {
 		this.printStream = p;
@@ -28,7 +31,7 @@ public class write extends Thread {
 		this.user = user;
 		this.userSocket = userSocket;
 		this.reader = reader;
-		printStream.println(user); // send the server the name 
+		printStream.println(user); // send the server the name
 	}
 
 	public void quit(){
@@ -44,6 +47,33 @@ public class write extends Thread {
 		}
 	}
 
+	public void startFileReceiverConnection (String filePath)
+	{
+	  // ":send /media/image.png"
+		Path fR_filePath = Paths.get( filePath );
+
+		try {
+			fileReceiver_Thread = new FileReceiver ( fR_filePath.toString() );
+			fileReceiver_Thread.start();
+		}
+		catch (ClassNotFoundException ex) { ex.printStackTrace(); }
+		catch (IOException ex) { ex.printStackTrace(); }
+		catch (Exception ex) { ex.printStackTrace(); }
+	}
+
+	public void transferFileToServer( String filename, String hostname,int portnumber)
+	{
+		// String filename = line.split(" ")[1] ;
+		// String hostname = userSocket.getInetAddress().getHostName();
+		try {
+			fileTransfer_Thread = new FileTransfer ( filename, hostname, portnumber );
+			fileTransfer_Thread.start();
+		}
+		catch (ClassNotFoundException ex) { ex.printStackTrace(); }
+		catch (IOException ex) { ex.printStackTrace(); }
+		catch (Exception ex) { ex.printStackTrace(); }
+	}
+
 	public void run() {
 		String line = "";
 		this.quit = false;
@@ -56,11 +86,37 @@ public class write extends Thread {
 				break; // leaves the infinite loop
 			}
 
-			// Format the user's input.
-			printStream.println(user + ": " + line); // write it to the chat
+			// Client request file tranfer,
+			// Server starts RUNNING fileReceiver_Thread,
+			// Client Sends file to Server
+			else if ( line.toUpperCase().contains(":SEND") ) {
+				System.out.println("Requesting file transfer ...");
+				printStream.println(user + ": " + line); // write it to the chat
+				String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
+				String fR_hostname = userSocket.getInetAddress().getHostName();
 
+				int fR_portnumber = 2021;
+				transferFileToServer( filename, fR_hostname, fR_portnumber );
+			}
+
+			// Client accepts offer.
+			// Send Client connection details to Server to receive file.
+			else if ( line.toUpperCase().contains(":Y") )
+			{
+				String fR_hostname = userSocket.getInetAddress().getHostName();
+				int fR_port = 2020;
+				this.startFileReceiverConnection("file_database/receivedfile");
+
+				// Write message to chat with ( hostname + portnumber )
+				printStream.println(user + ": " + line + " @port:"+ fR_port + ",hostname:" +fR_hostname );
+
+			}
+
+			else {
+				// Format the user's input.
+				printStream.println(user + ": " + line); // write it to the chat
+			}
 		}
 		quit(); // we have left the thread so we can quit
 	}
-
 }

@@ -15,7 +15,7 @@ TOOLS = $(LIB)/tools
 CLASSPATH=.:$(LIB)/junit-4.10.jar:$(LIB)/hamcrest-core-1.3.jar:$(SRC)/:$(BIN)/
 
 JAVAC = javac
-JFLAGS = -g -Xlint:unchecked -d $(BINDIR) -cp $(BINDIR):$(JUNIT) 
+JFLAGS = -g -Xlint:unchecked -d $(BINDIR) -cp $(BINDIR):$(JUNIT)
 
 vpath %.java $(SRCDIR):$(TESTDIR)
 vpath %.class $(BINDIR)
@@ -27,7 +27,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 # Default rule - will be invoked by make
-all:  Message.class User.class Server.class ServerApp.class
+all:  Message.class FileReceiver.class FileTransfer.class User.class Server.class ServerApp.class
 
 
 # Rules for unit testing
@@ -63,5 +63,3 @@ clean:
 	@rm *~
 	@rm */*~
 	@rm */**/*~
-
-
