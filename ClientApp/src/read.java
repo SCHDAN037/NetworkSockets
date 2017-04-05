@@ -41,16 +41,16 @@ public class read extends Thread {
 								String startPos = line.substring( line.indexOf(" ")+1 ) ;
 								String name = startPos.substring(0, startPos.indexOf(":"));
 								String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
-								String formatedText = userFormatColor + name +" sent an image offer ("+ filename +") : Reply ':Y' to accept offer or ':N' to reject" + clearColor;
+								String formatedText = userFormatColor + ">>" + name +" sent an image offer ("+ filename +") : Reply ':Y' to accept offer or ':N' to reject" + clearColor;
 								System.out.println( formatedText );
 							}
 
-						 // [00;00;00] : name :Y
+							// [00;00;00] : name :Y
 							else if ( line.toUpperCase().contains(":Y") ) {
 									String startPos = line.substring( line.indexOf(" ")+1 ) ;
-									String name = startPos.substring(0, startPos.indexOf(":")-1);
+									String name = startPos.substring(0, startPos.indexOf(":"));
 
-									String formatedText = userFormatColor + name +" accepted image offer!" + clearColor ;
+									String formatedText = userFormatColor + ">>" + name +" accepted image offer!" + clearColor ;
 						      System.out.println( formatedText );
 						  }
 						}
