@@ -63,8 +63,6 @@ public class write extends Thread {
 
 	public void transferFileToServer( String filename, String hostname,int portnumber)
 	{
-		// String filename = line.split(" ")[1] ;
-		// String hostname = userSocket.getInetAddress().getHostName();
 		try {
 			fileTransfer_Thread = new FileTransfer ( filename, hostname, portnumber );
 			fileTransfer_Thread.start();
@@ -90,7 +88,7 @@ public class write extends Thread {
 			// Server starts RUNNING fileReceiver_Thread,
 			// Client Sends file to Server
 			else if ( line.toUpperCase().contains(":SEND") ) {
-				System.out.println("Requesting file transfer ...");
+				System.out.println(">Requesting file transfer ...");
 				printStream.println(user + ": " + line); // write it to the chat
 				String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
 				String fR_hostname = userSocket.getInetAddress().getHostName();
