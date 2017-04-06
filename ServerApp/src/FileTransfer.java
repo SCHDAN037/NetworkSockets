@@ -54,7 +54,7 @@ public class FileTransfer  extends Thread
         ObjectOutputStream oos = new ObjectOutputStream ( c_socket.getOutputStream());
 
         oos.writeObject(buffer);
-        System.out.println("file sent!");
+        System.out.println(">>file sent!");
         oos.close();
         c_socket.close();
       }
