@@ -29,11 +29,12 @@ class User extends Thread {
 	private final PrintStream ps;
 	private final BufferedReader reader;
 	private String name; // the User's name
-	private Thread fileReceiver_Thread;
-	private Thread fileTransfer_Thread;
+	private FileReceiver fileReceiver_Thread;
+	private FileTransfer fileTransfer_Thread;
 
-	User(Socket s, BlockingQueue <Message> q, int i) throws IOException {
+	User(Socket s, BlockingQueue <Message> q, int i, FileReceiver fR_Thread) throws IOException {
 		socket = s;
+		fileReceiver_Thread = fR_Thread;
 		queue = q;
 		id = i;
 		ps = new PrintStream(socket.getOutputStream()) ;
@@ -50,18 +51,11 @@ class User extends Thread {
 
 	protected int getID() { return id; }
 
-	public void startFileReceiverConnection (String filePath)
+	public void setfilePath (String filePath)
 	{
 		// ":send /media/image.png"
-		Path fR_filePath = Paths.get( filePath );
 
-		try {
-			fileReceiver_Thread = new FileReceiver ( fR_filePath.toString() );
-			fileReceiver_Thread.start();
-		}
-		catch (ClassNotFoundException ex) { ex.printStackTrace(); }
-		catch (IOException ex) { ex.printStackTrace(); }
-		catch (Exception ex) { ex.printStackTrace(); }
+		fileReceiver_Thread.setFile ( filePath );
 	}
 
 	public void transferFileToClient(String hostname,int portnumber)
@@ -105,19 +99,18 @@ class User extends Thread {
 				else if ( line.toUpperCase().contains(":SEND") ) {
 					// SAVE FILE ON file_database
 					String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
-					startFileReceiverConnection("file_database/"+filename);
-					// System.out.println( line.substring(0, line.indexOf(":")) + " sending image transfer offer.." );
+					setfilePath("file_database/"+filename);
 					m = new Message(line, System.currentTimeMillis(), id);
 					queue.put(m); // add this to the queue
 				}
 				//e.g. user: ":Y"
 				else if ( line.toUpperCase().contains(":Y") ) {
 					String name = line.substring(0, line.indexOf(":")) ;
-					System.out.println( name + " Accepted image offer!" );
+					System.out.println( ">>" +name + " Accepted image offer!" );
 
 					// // e.g. [00:00:00] name : :Y @hostname:127.0.0.1,port:2020
-					// m = new Message(line, System.currentTimeMillis(), id);
-					// queue.put(m); // add this to the queue
+					m = new Message(line, System.currentTimeMillis(), id);
+					queue.put(m); // add this to the queue
 
 					String receiver = line.substring(line.indexOf("@")+1);
 					String r_portnumber = receiver.substring( receiver.indexOf(":")+1, receiver.indexOf(",") ) ;

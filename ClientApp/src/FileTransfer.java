@@ -39,10 +39,10 @@ public class FileTransfer  extends Thread
         // Socket c_socket = new Socket (hostname, portnumber);
         Socket c_socket = new Socket ( address , portnumber);
 
-        // Path path = Paths.get( filePath );
+        Path path = Paths.get( filePath );
+        File aFile = new File ( filePath ) ;
 
-        URL path = FileTransfer.class.getResource( filePath );
-        FileInputStream fis = new FileInputStream ( new File(path.getFile() ) ); //new File (path.toString()) );
+        FileInputStream fis = new FileInputStream ( aFile ); //new File (path.toString()) );
 
         byte[] data = Files.readAllBytes( Paths.get(path.toString()) );
 
@@ -52,7 +52,7 @@ public class FileTransfer  extends Thread
         ObjectOutputStream oos = new ObjectOutputStream ( c_socket.getOutputStream());
 
         oos.writeObject(buffer);
-        System.out.println("file sent!");
+        System.out.println(">>file delivered to server!");
         oos.close();
         c_socket.close();
       }
