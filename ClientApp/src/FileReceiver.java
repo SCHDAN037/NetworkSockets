@@ -33,8 +33,8 @@ public class FileReceiver  extends Thread
   {
     try {
       receiverSocket = new ServerSocket (2020);
-      System.out.println("\nFile receiver thread running on port 2020... ");
-      System.out.println("Waiting to receive file");
+      // System.out.println("\nFile receiver thread running on port 2020... ");
+      // System.out.println("Waiting to receive file");
 
       while ( true ) {
         Socket c_Socket = receiverSocket.accept();
@@ -50,7 +50,7 @@ public class FileReceiver  extends Thread
           FileOutputStream fos = new FileOutputStream ( new File ( file_location ) );
 
           fos.write(buffer);
-          System.out.println( "File saved as '" + file_location +"'");
+          System.out.println( ">>File saved as '" + file_location +"'");
         }
         catch ( ClassNotFoundException ex)
         { ex.printStackTrace(); }
