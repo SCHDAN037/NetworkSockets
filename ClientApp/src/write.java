@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.IOException;
 import java.nio.file.*;
+import java.io.File;
 
 /** this class writes everything it sees to a printstream
  * @Author Oliver Makins
@@ -103,7 +104,16 @@ public class write extends Thread {
 			{
 				String fR_hostname = userSocket.getInetAddress().getHostName();
 				int fR_port = 2020;
-				this.startFileReceiverConnection("file_database/receivedfile");
+
+				int files_count=0;
+				{
+					File f = new File("file_database/");
+					String files[] = f.list();
+
+					for (int i=0; i<files.length; i++)
+						files_count++;
+				}
+				this.startFileReceiverConnection("file_database/receivedfile"+files_count);
 
 				// Write message to chat with ( hostname + portnumber )
 				printStream.println(user + ": " + line + " @port:"+ fR_port + ",hostname:" +fR_hostname );
