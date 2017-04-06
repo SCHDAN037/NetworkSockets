@@ -34,33 +34,40 @@ public class FileReceiver  extends Thread
       //this.username = username;
   }
 
+  public void setFile (String fr_filePath)
+  {
+    file_location = fr_filePath ;
+  }
+
   public void run ()
   {
     try {
       receiverSocket = new ServerSocket (2021);
-      System.out.println("\nFile receiver thread running on port 2021... ");
-      System.out.println("Waiting to receive file");
+      // System.out.println("\nFile receiver thread running on port 2021... ");
+      // System.out.println("Waiting to receive file");
 
       while ( true ) {
         Socket c_Socket = receiverSocket.accept();
 
         ObjectInputStream ois = new ObjectInputStream( c_Socket.getInputStream() );
-        //System.out.println("Client connected to server!");
 
-        try {
-          byte[] buffer = (byte[]) ois.readObject();
+        if ( file_location.length() >1) {
+          System.out.println("Client connected to server!");
+          try {
+            byte[] buffer = (byte[]) ois.readObject();
 
-          // @file_location: location where image will be saved with its name included
-          // FileOutputStream fos = new FileOutputStream ( file_location );
-          FileOutputStream fos = new FileOutputStream ( new File ( file_location ) );
+            // @file_location: location where image will be saved with its name included
+            // FileOutputStream fos = new FileOutputStream ( file_location );
+            FileOutputStream fos = new FileOutputStream ( new File ( file_location ) );
 
-          fos.write(buffer);
-          System.out.println( "File saved as '" + file_location +"'");
+            fos.write(buffer);
+            System.out.println( ">>File saved as '" + file_location +"'");
+          }
+          catch ( ClassNotFoundException ex)
+          { ex.printStackTrace(); }
+
+          c_Socket.close();
         }
-        catch ( ClassNotFoundException ex)
-        { ex.printStackTrace(); }
-
-        c_Socket.close();
       }
       //receiverSocket.close();
     }
