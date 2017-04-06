@@ -109,8 +109,8 @@ class User extends Thread {
 					System.out.println( ">>" +name + " Accepted image offer!" );
 
 					// // e.g. [00:00:00] name : :Y @hostname:127.0.0.1,port:2020
-					// m = new Message(line, System.currentTimeMillis(), id);
-					// queue.put(m); // add this to the queue
+					m = new Message(line, System.currentTimeMillis(), id);
+					queue.put(m); // add this to the queue
 
 					String receiver = line.substring(line.indexOf("@")+1);
 					String r_portnumber = receiver.substring( receiver.indexOf(":")+1, receiver.indexOf(",") ) ;
