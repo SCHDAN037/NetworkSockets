@@ -16,6 +16,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.*;
+import java.io.*;
 import java.lang.Thread;
 
 public class FileReceiver  extends Thread
@@ -36,6 +37,8 @@ public class FileReceiver  extends Thread
       // System.out.println("\nFile receiver thread running on port 2020... ");
       // System.out.println("Waiting to receive file");
 
+      boolean file_received = false;
+
       while ( true ) {
         Socket c_Socket = receiverSocket.accept();
 
@@ -51,11 +54,19 @@ public class FileReceiver  extends Thread
 
           fos.write(buffer);
           System.out.println( ">>File saved as '" + file_location +"'");
+
+          ois.close();
+          c_Socket.close();
+          file_received = true;
         }
         catch ( ClassNotFoundException ex)
         { ex.printStackTrace(); }
 
-        c_Socket.close();
+        if ( file_received ){
+          receiverSocket.close();
+          break;
+        }
+
       }
     }
     catch (UnknownHostException ex)
