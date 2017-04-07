@@ -16,24 +16,25 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.*;
-import java.io.*;
 import java.lang.Thread;
 
 public class FileReceiver  extends Thread
 {
   private String file_location;
   private String usename;
-  protected ServerSocket receiverSocket ;
+  private ServerSocket receiverSocket ;
+  private int fR_port;
 
-  public FileReceiver (String file_location) throws ClassNotFoundException, IOException, Exception
+  public FileReceiver (String file_location,int fR_port) throws ClassNotFoundException, IOException, Exception
   {
       this.file_location = file_location ;
+      this.fR_port = fR_port ;
   }
 
   public void run ()
   {
     try {
-      receiverSocket = new ServerSocket (2020);
+      receiverSocket = new ServerSocket (fR_port);
       // System.out.println("\nFile receiver thread running on port 2020... ");
       // System.out.println("Waiting to receive file");
 
@@ -62,7 +63,8 @@ public class FileReceiver  extends Thread
         catch ( ClassNotFoundException ex)
         { ex.printStackTrace(); }
 
-        if ( file_received ){
+        if ( file_received )
+        {
           receiverSocket.close();
           break;
         }
