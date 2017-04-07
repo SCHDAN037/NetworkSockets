@@ -40,23 +40,31 @@ public class FileTransfer  extends Thread
         // Get the file name in file_database/
         File f = new File("file_database/");
         String files[] = f.list();
-        filePath = "file_database/"+files[0] ;
 
-        Path path = Paths.get( filePath );
+        if ( files.length >0 ) {
+          filePath = "file_database/"+files[0] ;
 
-        FileInputStream fis = new FileInputStream ( path.toString() );
+          Path path = Paths.get( filePath );
 
-        byte[] data = Files.readAllBytes( path );
+          FileInputStream fis = new FileInputStream ( path.toString() );
 
-        byte [] buffer =  data; // new byte [fis.available()];   // available returns number of bytes
-        fis.read(buffer);
+          byte[] data = Files.readAllBytes( path );
 
-        ObjectOutputStream oos = new ObjectOutputStream ( c_socket.getOutputStream());
+          byte [] buffer =  data; // new byte [fis.available()];   // available returns number of bytes
+          fis.read(buffer);
 
-        oos.writeObject(buffer);
-        System.out.println(">>file sent!");
-        oos.close();
+          ObjectOutputStream oos = new ObjectOutputStream ( c_socket.getOutputStream());
+
+          oos.writeObject(buffer);
+          System.out.println(">>file sent!");
+          oos.close();
+
+        }
+        else
+          System.out.println(">>No file(s) to send!");
+
         c_socket.close();
+
       }
 
     catch(IOException ex)
