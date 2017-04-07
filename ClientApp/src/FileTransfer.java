@@ -39,21 +39,26 @@ public class FileTransfer  extends Thread
         // Socket c_socket = new Socket (hostname, portnumber);
         Socket c_socket = new Socket ( address , portnumber);
 
-        Path path = Paths.get( filePath );
         File aFile = new File ( filePath ) ;
 
-        FileInputStream fis = new FileInputStream ( aFile ); //new File (path.toString()) );
+        if ( aFile.exists() & aFile.isFile()) {
+          Path path = Paths.get( filePath );
 
-        byte[] data = Files.readAllBytes( Paths.get(path.toString()) );
+          FileInputStream fis = new FileInputStream ( aFile ); //new File (path.toString()) );
 
-        byte [] buffer =  data; // new byte [fis.available()];   // available returns number of bytes
-        fis.read(buffer);
+          byte[] data = Files.readAllBytes( Paths.get(path.toString()) );
 
-        ObjectOutputStream oos = new ObjectOutputStream ( c_socket.getOutputStream());
+          byte [] buffer =  data; // new byte [fis.available()];   // available returns number of bytes
+          fis.read(buffer);
 
-        oos.writeObject(buffer);
-        System.out.println(">>file delivered to server!");
-        oos.close();
+          ObjectOutputStream oos = new ObjectOutputStream ( c_socket.getOutputStream());
+
+          oos.writeObject(buffer);
+          System.out.println(">>file delivered to server!");
+          oos.close();
+        }
+        else
+          System.out.println(">>Error file not delivered. Please enter correct filepath.!");
         c_socket.close();
       }
       catch(UnknownHostException ex)
