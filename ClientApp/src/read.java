@@ -53,6 +53,16 @@ public class read extends Thread {
 									String formatedText = userFormatColor +">>"+ name +" accepted image offer!" + clearColor ;
 						      System.out.println( formatedText );
 						  }
+							else if ( line.toUpperCase().contains(":N") ) {
+								String startPos = line.substring( line.indexOf(" ")+1 ) ;
+								String name = startPos.substring(0, startPos.indexOf(":"));
+
+								String formatedText = userFormatColor +">>"+ name + " declined image offer!" + clearColor ;
+								System.out.println( formatedText );
+							}
+							else if ( line.toUpperCase().contains("@port") ) {
+							}
+
 						}
 				}
 					 // System.out.println(line);

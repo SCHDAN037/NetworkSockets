@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.IOException;
 import java.nio.file.*;
+import java.io.File;
 
 /** this class writes everything it sees to a printstream
  * @Author Oliver Makins
@@ -47,13 +48,13 @@ public class write extends Thread {
 		}
 	}
 
-	public void startFileReceiverConnection (String filePath)
+	public void startFileReceiverConnection (String filePath,int fR_port)
 	{
 	  // ":send /media/image.png"
 		Path fR_filePath = Paths.get( filePath );
 
 		try {
-			fileReceiver_Thread = new FileReceiver ( fR_filePath.toString() );
+			fileReceiver_Thread = new FileReceiver ( fR_filePath.toString(), fR_port );
 			fileReceiver_Thread.start();
 		}
 		catch (ClassNotFoundException ex) { ex.printStackTrace(); }
@@ -61,15 +62,18 @@ public class write extends Thread {
 		catch (Exception ex) { ex.printStackTrace(); }
 	}
 
-	public void transferFileToServer( String filename, String hostname,int portnumber)
+	public boolean transferFileToServer( String filename, String hostname,int portnumber)
 	{
+		boolean sent = false;
 		try {
 			fileTransfer_Thread = new FileTransfer ( filename, hostname, portnumber );
 			fileTransfer_Thread.start();
+			sent = true;
 		}
 		catch (ClassNotFoundException ex) { ex.printStackTrace(); }
 		catch (IOException ex) { ex.printStackTrace(); }
 		catch (Exception ex) { ex.printStackTrace(); }
+		return sent;
 	}
 
 	public void run() {
@@ -89,12 +93,18 @@ public class write extends Thread {
 			// Client Sends file to Server
 			else if ( line.toUpperCase().contains(":SEND") ) {
 				System.out.println(">Requesting file transfer ...");
-				printStream.println(user + ": " + line); // write it to the chat
-				String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
-				String fR_hostname = userSocket.getInetAddress().getHostName();
 
 				int fR_portnumber = 2021;
-				transferFileToServer( filename, fR_hostname, fR_portnumber );
+				String filename = line.substring( line.lastIndexOf(" ")+1 ) ;
+				String fR_hostname = userSocket.getInetAddress().getHostName();
+				boolean sent_to_server = transferFileToServer( filename, fR_hostname, fR_portnumber );
+
+				if ( sent_to_server ){
+					printStream.println(user + ": " + line); // write it to the chat
+				}
+				else {
+					System.out.println("File not sent! please enter the correct file path!");
+				}
 			}
 
 			// Client accepts offer.
@@ -102,12 +112,20 @@ public class write extends Thread {
 			else if ( line.toUpperCase().contains(":Y") )
 			{
 				String fR_hostname = userSocket.getInetAddress().getHostName();
-				int fR_port = 2020;
-				this.startFileReceiverConnection("file_database/receivedfile");
+				int fR_port = 2016;
+
+				int files_count=0;
+				{
+					File f = new File("file_database/");
+					String files[] = f.list();
+
+					for (int i=0; i<files.length; i++)
+						files_count++;
+				}
+				this.startFileReceiverConnection("file_database/receivedfile"+files_count, fR_port);
 
 				// Write message to chat with ( hostname + portnumber )
 				printStream.println(user + ": " + line + " @port:"+ fR_port + ",hostname:" +fR_hostname );
-
 			}
 
 			else {

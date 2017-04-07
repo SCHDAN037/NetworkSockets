@@ -33,6 +33,8 @@ class Server extends Thread {
 
 		// let them loose into the wild
 		System.out.println("Chat running");
+		Tracker.current_users_count = 0 ;
+		Tracker.image_offer_replies_count= 0 ;
 	}
 
 
@@ -71,6 +73,9 @@ class Server extends Thread {
 			User u = new User(s, queue, id, fileReceiver_Thread); // make another user to the chat
 		u.start(); // start the thread
 		users.add(u); // add it
+
+		// record user count on tracker
+		Tracker.current_users_count +=1 ;
 
 		/** add this functionality if we add usernames on the server; this will print out
 		 * who is online

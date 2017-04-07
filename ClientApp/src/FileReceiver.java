@@ -22,19 +22,23 @@ public class FileReceiver  extends Thread
 {
   private String file_location;
   private String usename;
-  protected ServerSocket receiverSocket ;
+  private ServerSocket receiverSocket ;
+  private int fR_port;
 
-  public FileReceiver (String file_location) throws ClassNotFoundException, IOException, Exception
+  public FileReceiver (String file_location,int fR_port) throws ClassNotFoundException, IOException, Exception
   {
       this.file_location = file_location ;
+      this.fR_port = fR_port ;
   }
 
   public void run ()
   {
     try {
-      receiverSocket = new ServerSocket (2020);
+      receiverSocket = new ServerSocket (fR_port);
       // System.out.println("\nFile receiver thread running on port 2020... ");
       // System.out.println("Waiting to receive file");
+
+      boolean file_received = false;
 
       while ( true ) {
         Socket c_Socket = receiverSocket.accept();
@@ -51,11 +55,20 @@ public class FileReceiver  extends Thread
 
           fos.write(buffer);
           System.out.println( ">>File saved as '" + file_location +"'");
+
+          ois.close();
+          c_Socket.close();
+          file_received = true;
         }
         catch ( ClassNotFoundException ex)
         { ex.printStackTrace(); }
 
-        c_Socket.close();
+        if ( file_received )
+        {
+          receiverSocket.close();
+          break;
+        }
+
       }
     }
     catch (UnknownHostException ex)
